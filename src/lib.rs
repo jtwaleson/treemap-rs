@@ -5,6 +5,9 @@
 ///
 /// - size: corresponds to area in map.
 /// - bounds: the bounding rectangle of the item in the map.
+///
+use serde::{Serialize};
+
 pub trait Mappable {
     fn size(&self) -> f64;
     fn bounds(&self) -> &Rect;
@@ -23,7 +26,7 @@ impl Mappable for Box<dyn Mappable> {
     }
 }
 
-#[derive(Debug, PartialEq, Copy, Clone)]
+#[derive(Debug, PartialEq, Copy, Clone, Serialize)]
 pub struct Rect {
     pub x: f64,
     pub y: f64,
@@ -37,7 +40,6 @@ impl Default for Rect {
     }
 }
 
-#[derive(serde::Serialize)]
 impl Rect {
     pub fn new() -> Rect {
         Rect {
