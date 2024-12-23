@@ -37,6 +37,7 @@ impl Default for Rect {
     }
 }
 
+#[derive(serde::Serialize)]
 impl Rect {
     pub fn new() -> Rect {
         Rect {
